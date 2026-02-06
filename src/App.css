@@ -282,6 +282,7 @@ button {
   font-size: 0.9rem;
   opacity: 0.7;
   z-index: 3;
+  pointer-events: none;
 }
 
 /* Success Screen */
@@ -468,6 +469,10 @@ button {
   .success-message .message {
     font-size: 1.1rem;
   }
+
+  .buttons-container {
+    margin-bottom: 80px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -476,12 +481,13 @@ button {
   }
 
   .buttons-container {
-    flex-direction: column;
-    align-items: center;
+    gap: 15px;
+    margin-bottom: 80px;
   }
 
   button {
-    width: 200px;
+    font-size: 1.1rem;
+    padding: 12px 25px;
   }
 
   .success-title {
