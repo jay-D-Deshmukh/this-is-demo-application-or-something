@@ -1,42 +1,490 @@
-#root {
-  max-width: 1280px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+}
+
+.app {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #ffeef8 0%, #ffe5f0 25%, #f5e6ff 50%, #ffe9e0 75%, #fff0f5 100%);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Floating Hearts Background */
+.floating-hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-heart {
+  position: absolute;
+  animation: float-up linear infinite;
+  filter: blur(0.5px);
+}
+
+@keyframes float-up {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.7;
+  }
+
+  90% {
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Container */
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 40px 20px;
+}
+
+/* Hero Section */
+.hero-section {
   text-align: center;
+  animation: fadeIn 1s ease-in;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(20px);
   }
+
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+.sparkles {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
   }
 }
 
-.card {
-  padding: 2em;
+.main-heading {
+  font-size: 3.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ff6b9d 0%, #c44569 50%, #9b59b6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 40px;
+  line-height: 1.3;
+  animation: glow 3s ease-in-out infinite;
 }
 
-.read-the-docs {
-  color: #888;
+@keyframes glow {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 10px rgba(255, 107, 157, 0.3));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 107, 157, 0.5));
+  }
+}
+
+/* Love Message */
+.love-message {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  padding: 40px;
+  margin: 40px 0;
+  box-shadow: 0 8px 32px rgba(255, 107, 157, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+}
+
+.message-line {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #5a4a6a;
+  margin-bottom: 20px;
+  animation: slideIn 0.8s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.message-line.highlight {
+  color: #c44569;
+  font-size: 1.2rem;
+}
+
+.message-line strong {
+  color: #ff6b9d;
+  font-weight: 600;
+}
+
+.message-line em {
+  color: #9b59b6;
+  font-style: italic;
+}
+
+.sweet-line {
+  display: inline-block;
+  color: #ff6b9d;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.message-line.emotional {
+  background: linear-gradient(135deg, #ffe5f0 0%, #f5e6ff 100%);
+  padding: 20px;
+  border-radius: 15px;
+  border-left: 4px solid #ff6b9d;
+  margin: 25px 0;
+}
+
+.filmy-quote {
+  margin-top: 30px;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: #c44569;
+  padding: 25px;
+  background: linear-gradient(135deg, #fff0f5 0%, #ffe9f0 100%);
+  border-radius: 20px;
+  position: relative;
+  line-height: 1.8;
+  font-weight: 500;
+}
+
+.quote-mark {
+  font-size: 3rem;
+  color: #ff6b9d;
+  opacity: 0.3;
+  line-height: 0;
+}
+
+/* Buttons */
+.buttons-container {
+  margin: 50px 0 30px;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+button {
+  font-size: 1.5rem;
+  padding: 18px 50px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.yes-button {
+  background: linear-gradient(135deg, #ff6b9d 0%, #ff8fb3 100%);
+  color: white;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 6px 20px rgba(255, 107, 157, 0.3);
+  }
+
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(255, 107, 157, 0.5);
+  }
+}
+
+.yes-button:hover {
+  transform: scale(1.1) rotate(-2deg);
+  box-shadow: 0 10px 40px rgba(255, 107, 157, 0.4);
+}
+
+.no-button {
+  background: linear-gradient(135deg, #d4d4d4 0%, #b8b8b8 100%);
+  color: #666;
+}
+
+.no-button:hover {
+  background: linear-gradient(135deg, #ff6b9d 0%, #ff8fb3 100%);
+  color: white;
+}
+
+.hint {
+  font-size: 0.95rem;
+  color: #9b59b6;
+  font-style: italic;
+  margin-top: 20px;
+  opacity: 0.8;
+}
+
+/* Footer */
+.footer-note {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #c44569;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  z-index: 3;
+}
+
+/* Success Screen */
+.success-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff6b9d 0%, #c44569 50%, #9b59b6 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  animation: successFade 0.8s ease-in;
+  z-index: 9999;
+}
+
+@keyframes successFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.success-content {
+  text-align: center;
+  color: white;
+  position: relative;
+  z-index: 2;
+  padding: 40px;
+  max-width: 800px;
+}
+
+.heart-burst {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.burst-heart {
+  position: absolute;
+  font-size: 3rem;
+  animation: burstOut 2s ease-out forwards;
+  left: 50%;
+  top: 50%;
+}
+
+@keyframes burstOut {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) translateY(0) scale(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(var(--angle)) translateY(300px) scale(1);
+    opacity: 0;
+  }
+}
+
+.success-title {
+  font-size: 5rem;
+  margin-bottom: 40px;
+  animation: bounceIn 1s ease-out;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.success-message {
+  animation: slideUp 1s ease-out 0.5s both;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quote {
+  font-size: 2rem;
+  font-style: italic;
+  margin-bottom: 30px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.success-message .message {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  margin-bottom: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.romantic-quote {
+  font-size: 1.5rem;
+  font-style: italic;
+  margin: 35px 0;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  line-height: 1.8;
+  backdrop-filter: blur(10px);
+}
+
+.final-hearts {
+  font-size: 2.5rem;
+  margin-top: 40px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main-heading {
+    font-size: 2.5rem;
+  }
+
+  .love-message {
+    padding: 25px;
+  }
+
+  .message-line {
+    font-size: 1rem;
+  }
+
+  .filmy-quote {
+    font-size: 1.1rem;
+  }
+
+  button {
+    font-size: 1.2rem;
+    padding: 15px 35px;
+  }
+
+  .success-title {
+    font-size: 3rem;
+  }
+
+  .quote {
+    font-size: 1.5rem;
+  }
+
+  .success-message .message {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-heading {
+    font-size: 2rem;
+  }
+
+  .buttons-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  button {
+    width: 200px;
+  }
+
+  .success-title {
+    font-size: 2.5rem;
+  }
 }
