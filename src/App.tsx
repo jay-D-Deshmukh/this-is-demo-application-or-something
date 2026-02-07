@@ -32,34 +32,111 @@ function App() {
 
   if (showSuccess) {
     return (
-      <div className="success-screen">
+      <div className="success-screen rose-day-theme">
         <div className="success-content">
-          <div className="heart-burst">
-            {'💖'.repeat(20).split('').map((heart, i) => (
-              <span key={i} className="burst-heart" style={{
-                '--angle': `${(360 / 20) * i}deg`,
-                animationDelay: `${i * 0.1}s`
-              } as React.CSSProperties}>
-                {heart}
-              </span>
+          {/* Rose petals falling */}
+          <div className="rose-petals">
+            {[...Array(30)].map((_, i) => (
+              <div
+                key={i}
+                className="petal"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 5}s`,
+                  animationDuration: `${6 + Math.random() * 4}s`,
+                  '--rotation': `${Math.random() * 360}deg`
+                } as React.CSSProperties}
+              >
+                🌹
+              </div>
             ))}
           </div>
-          <h1 className="success-title">Yayyy! 💕✨</h1>
-          <div className="success-message">
-            <p className="quote">"Tumne mere dil ki sun li! 💖"</p>
-            <p className="message">
-              I knew you'd say yes because you have the kindest heart I've ever known.
+
+          {/* Animated Rose Bloom */}
+          <div className="rose-bloom">
+            <div className="rose-container">
+              <div className="rose-emoji">🌹</div>
+            </div>
+          </div>
+
+          <h1 className="success-title rose-day-title">
+            🌹 Happy Rose Day! 🌹
+          </h1>
+
+          <div className="success-message rose-day-content">
+            <p className="rose-quote">
+              "Tumne mere dil ki sun li! 💖"
             </p>
-            <p className="message">
-              Thank you for being you, Vaishnavi. For listening to my random thoughts,
-              for sharing your world with me, for making every conversation feel like home.
-            </p>
-            <p className="romantic-quote">
-              "In a world full of temporary things,<br />
-              you are my forever feeling." 🌸
-            </p>
+
+            <div className="rose-comparison">
+              <h2 className="comparison-title">They Say Roses Are Beautiful...</h2>
+
+              <div className="comparison-card">
+                <div className="comparison-icon">🌹</div>
+                <p className="comparison-text">
+                  Roses are red, delicate, and admired by everyone who sees them.
+                </p>
+              </div>
+
+              <div className="comparison-divider">
+                <span className="divider-text">But Vaishnavi...</span>
+              </div>
+
+              <div className="comparison-card highlight">
+                <div className="comparison-icon">✨</div>
+                <p className="comparison-text">
+                  <strong>You are a garden of roses</strong> — Your smile blooms brighter
+                  than any flower, your kindness is more fragrant than any perfume,
+                  and your presence makes every moment feel like spring. 🌸
+                </p>
+              </div>
+
+              <div className="comparison-card highlight">
+                <div className="comparison-icon">💕</div>
+                <p className="comparison-text">
+                  A rose lasts a few days, but <strong>the way you make me feel</strong> —
+                  that's eternal. Your beauty isn't just in how you look,
+                  it's in your laughter, your words, your soul. 🌟
+                </p>
+              </div>
+
+              <div className="comparison-card highlight">
+                <div className="comparison-icon">🌹</div>
+                <p className="comparison-text">
+                  Roses have thorns to protect their beauty, but you —
+                  you protect my heart with your care, your understanding,
+                  and the warmth you bring to my life. 💖
+                </p>
+              </div>
+            </div>
+
+            <div className="rose-poem">
+              <p className="poem-line">गुलाब तो हज़ारों हैं बाज़ार में,</p>
+              <p className="poem-line">पर तुम जैसी एक ही हो इस संसार में। 🌹</p>
+              <p className="poem-line">फूलों की खुशबू फीकी है तेरे सामने,</p>
+              <p className="poem-line">क्योंकि तू खुद एक महकता गुलिस्तान है। ✨</p>
+            </div>
+
+            <div className="rose-day-message">
+              <p className="final-message">
+                On this Rose Day, I want you to know — every rose I see reminds me of you,
+                but none can ever match your grace, your beauty, your soul.
+              </p>
+              <p className="final-message">
+                Thank you for saying yes, Vaishnavi.
+                You've made this Rose Day, and every day, infinitely more beautiful. 🌹💕
+              </p>
+            </div>
+
+            <div className="rating-banner">
+              <div className="rating-stars">⭐⭐⭐⭐⭐</div>
+              <p className="rating-text">Vaishnavi: 11/10 ✨</p>
+              <p className="rating-subtext">Roses: 10/10 🌹</p>
+              <p className="rating-note">(You win, always. 💖)</p>
+            </div>
+
             <div className="final-hearts">
-              💖 🌸 ✨ 💕 🌟 💖
+              🌹 💖 ✨ 🌸 💕 🌹
             </div>
           </div>
         </div>

@@ -285,7 +285,611 @@ button {
   pointer-events: none;
 }
 
-/* Success Screen */
+/* ==================== ROSE DAY THEME ==================== */
+
+.rose-day-theme {
+  background: linear-gradient(135deg,
+      #ff1744 0%,
+      #e91e63 25%,
+      #c2185b 50%,
+      #880e4f 75%,
+      #4a0e2e 100%);
+}
+
+/* Rose Petals Falling Animation */
+.rose-petals {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.petal {
+  position: absolute;
+  font-size: 2.5rem;
+  animation: petalFall linear infinite;
+  filter: drop-shadow(0 0 8px rgba(255, 23, 68, 0.5));
+}
+
+@keyframes petalFall {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(100vh) rotate(var(--rotation));
+    opacity: 0;
+  }
+}
+
+/* Rose Bloom Animation */
+.rose-bloom {
+  position: absolute;
+  top: -10vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  animation: bloomDrop 2s ease-out forwards;
+}
+
+@keyframes bloomDrop {
+  0% {
+    top: -10vh;
+    transform: translateX(-50%) scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 5vh;
+    transform: translateX(-50%) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.rose-container {
+  position: relative;
+  animation: roseGlow 2s ease-in-out infinite;
+}
+
+@keyframes roseGlow {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.6)) drop-shadow(0 0 40px rgba(255, 23, 68, 0.4));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 60px rgba(255, 23, 68, 0.6));
+  }
+}
+
+.rose-emoji {
+  font-size: clamp(3rem, 8vw, 6rem);
+  animation: roseRotate 4s ease-in-out infinite;
+}
+
+@keyframes roseRotate {
+
+  0%,
+  100% {
+    transform: rotate(-5deg);
+  }
+
+  50% {
+    transform: rotate(5deg);
+  }
+}
+
+/* Rose Day Success Content */
+.rose-day-title {
+  margin-top: 8vh;
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: white;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
+    0 0 40px rgba(255, 23, 68, 0.5),
+    0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: titlePulse 3s ease-in-out infinite;
+}
+
+@keyframes titlePulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.rose-day-content {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 30px;
+  padding: clamp(20px, 4vw, 50px);
+  margin-top: 3vh;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  border: 3px solid rgba(255, 255, 255, 1);
+  animation: contentFadeIn 1.5s ease-out 0.5s both;
+  max-height: 65vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar for rose day content */
+.rose-day-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.rose-day-content::-webkit-scrollbar-track {
+  background: rgba(194, 24, 91, 0.1);
+  border-radius: 10px;
+}
+
+.rose-day-content::-webkit-scrollbar-thumb {
+  background: rgba(194, 24, 91, 0.3);
+  border-radius: 10px;
+}
+
+.rose-day-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(194, 24, 91, 0.5);
+}
+
+@keyframes contentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rose-quote {
+  font-size: clamp(1.2rem, 3vw, 2.2rem);
+  font-style: italic;
+  color: #c2185b;
+  margin-bottom: 30px;
+  text-shadow: 0 2px 10px rgba(194, 24, 91, 0.2);
+  font-weight: 600;
+}
+
+/* Rose Comparison Section */
+.rose-comparison {
+  margin: 40px 0;
+}
+
+.comparison-title {
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  color: #880e4f;
+  margin-bottom: 25px;
+  font-weight: 700;
+  text-align: center;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.comparison-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #ff1744, transparent);
+}
+
+.comparison-card {
+  background: linear-gradient(135deg, #fff5f8 0%, #ffe5ec 100%);
+  border-radius: 15px;
+  padding: clamp(15px, 2.5vw, 25px);
+  margin: 15px 0;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(194, 24, 91, 0.1);
+  transition: all 0.3s ease;
+  animation: cardSlideIn 0.8s ease-out backwards;
+}
+
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.comparison-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.comparison-card:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.comparison-card:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+.comparison-card.highlight {
+  background: linear-gradient(135deg, #ff1744 0%, #e91e63 100%);
+  color: white;
+  box-shadow: 0 8px 25px rgba(255, 23, 68, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.comparison-card.highlight .comparison-text {
+  color: white;
+}
+
+.comparison-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(194, 24, 91, 0.2);
+}
+
+.comparison-card.highlight:hover {
+  box-shadow: 0 12px 40px rgba(255, 23, 68, 0.5);
+}
+
+.comparison-icon {
+  font-size: clamp(2rem, 4vw, 3rem);
+  flex-shrink: 0;
+  animation: iconBounce 2s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  25% {
+    transform: translateY(-10px) rotate(-5deg);
+  }
+
+  75% {
+    transform: translateY(-5px) rotate(5deg);
+  }
+}
+
+.comparison-text {
+  font-size: clamp(0.9rem, 1.8vw, 1.15rem);
+  line-height: 1.6;
+  color: #5a4a6a;
+  text-align: left;
+}
+
+.comparison-text strong {
+  font-weight: 700;
+  color: #c2185b;
+}
+
+.comparison-card.highlight .comparison-text strong {
+  color: #ffe5ec;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.comparison-divider {
+  text-align: center;
+  margin: 35px 0;
+  position: relative;
+}
+
+.comparison-divider::before,
+.comparison-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 35%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff1744, transparent);
+}
+
+.comparison-divider::before {
+  left: 0;
+}
+
+.comparison-divider::after {
+  right: 0;
+}
+
+.divider-text {
+  display: inline-block;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  color: #c2185b;
+  background: white;
+  padding: 8px 20px;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(194, 24, 91, 0.2);
+  position: relative;
+  z-index: 2;
+}
+
+/* Rose Poem */
+.rose-poem {
+  background: linear-gradient(135deg, #4a0e2e 0%, #880e4f 100%);
+  color: white;
+  padding: clamp(20px, 3vw, 35px);
+  border-radius: 20px;
+  margin: 30px 0;
+  box-shadow: 0 8px 30px rgba(74, 14, 46, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.rose-poem::before {
+  content: '🌹';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: clamp(4rem, 10vw, 8rem);
+  opacity: 0.1;
+  transform: rotate(15deg);
+}
+
+.poem-line {
+  font-size: clamp(0.95rem, 2vw, 1.4rem);
+  line-height: 1.8;
+  font-style: italic;
+  text-align: center;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  margin: 8px 0;
+  animation: poemReveal 1s ease-out backwards;
+}
+
+.poem-line:nth-child(1) {
+  animation-delay: 1s;
+}
+
+.poem-line:nth-child(2) {
+  animation-delay: 1.3s;
+}
+
+.poem-line:nth-child(3) {
+  animation-delay: 1.6s;
+}
+
+.poem-line:nth-child(4) {
+  animation-delay: 1.9s;
+}
+
+@keyframes poemReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Rose Day Message */
+.rose-day-message {
+  margin: 30px 0;
+  padding: clamp(15px, 3vw, 30px);
+  background: linear-gradient(135deg, #fff0f5 0%, #ffe5f0 100%);
+  border-radius: 20px;
+  border-left: 5px solid #ff1744;
+}
+
+.final-message {
+  font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+  line-height: 1.8;
+  color: #5a4a6a;
+  margin: 12px 0;
+  text-align: center;
+}
+
+/* Rating Banner */
+.rating-banner {
+  background: linear-gradient(135deg, #ff1744 0%, #e91e63 100%);
+  padding: clamp(20px, 3vw, 30px);
+  border-radius: 20px;
+  margin: 30px 0;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(255, 23, 68, 0.4);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+  animation: bannerShine 3s ease-in-out infinite;
+}
+
+@keyframes bannerShine {
+
+  0%,
+  100% {
+    box-shadow: 0 10px 40px rgba(255, 23, 68, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 10px 50px rgba(255, 23, 68, 0.6),
+      0 0 60px rgba(255, 255, 255, 0.3);
+  }
+}
+
+.rating-stars {
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  margin-bottom: 12px;
+  animation: starTwinkle 1.5s ease-in-out infinite;
+}
+
+@keyframes starTwinkle {
+
+  0%,
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+    filter: brightness(1.3);
+  }
+}
+
+.rating-text {
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  font-weight: 700;
+  color: white;
+  margin: 8px 0;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+}
+
+.rating-subtext {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: rgba(255, 255, 255, 0.9);
+  margin: 6px 0;
+}
+
+.rating-note {
+  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.8);
+  font-style: italic;
+  margin-top: 8px;
+}
+
+/* Final Hearts */
+.final-hearts {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-top: 30px;
+  animation: heartFloat 3s ease-in-out infinite;
+}
+
+@keyframes heartFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* Responsive - Rose Day */
+@media (max-width: 768px) {
+  .rose-day-title {
+    font-size: 2.5rem;
+    margin-top: 100px;
+  }
+
+  .rose-emoji {
+    font-size: 4rem;
+  }
+
+  .rose-day-content {
+    padding: 30px;
+  }
+
+  .rose-quote {
+    font-size: 1.6rem;
+  }
+
+  .comparison-title {
+    font-size: 1.5rem;
+  }
+
+  .comparison-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .comparison-icon {
+    font-size: 2.5rem;
+  }
+
+  .comparison-text {
+    font-size: 1rem;
+  }
+
+  .poem-line {
+    font-size: 1.1rem;
+  }
+
+  .rating-text {
+    font-size: 1.5rem;
+  }
+
+  .rating-stars {
+    font-size: 2rem;
+  }
+
+  .divider-text {
+    font-size: 1.2rem;
+    padding: 8px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .rose-day-title {
+    font-size: 2rem;
+    margin-top: 80px;
+  }
+
+  .rose-emoji {
+    font-size: 3rem;
+  }
+
+  .rose-day-content {
+    padding: 20px;
+  }
+
+  .rose-quote {
+    font-size: 1.3rem;
+  }
+
+  .comparison-card {
+    padding: 20px;
+  }
+
+  .comparison-icon {
+    font-size: 2rem;
+  }
+
+  .poem-line {
+    font-size: 1rem;
+  }
+
+  .final-message {
+    font-size: 1rem;
+  }
+}
+
+/* ==================== END ROSE DAY THEME ==================== */
+
+/* Success Screen (Original - kept for future days) */
 .success-screen {
   position: fixed;
   top: 0;
@@ -316,8 +920,31 @@ button {
   color: white;
   position: relative;
   z-index: 2;
-  padding: 40px;
-  max-width: 800px;
+  padding: clamp(20px, 4vw, 40px);
+  max-width: 900px;
+  width: 100%;
+  max-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar for success content */
+.success-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.success-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.success-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+.success-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .heart-burst {
@@ -415,24 +1042,6 @@ button {
   border-radius: 20px;
   line-height: 1.8;
   backdrop-filter: blur(10px);
-}
-
-.final-hearts {
-  font-size: 2.5rem;
-  margin-top: 40px;
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-20px);
-  }
 }
 
 /* Responsive */
