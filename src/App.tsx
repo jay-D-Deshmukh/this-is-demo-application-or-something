@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { Routes, Route, Navigate, useParams } from 'react-router-dom'
+import { Routes, Route, Navigate, useParams, Link, useLocation } from 'react-router-dom'
 import './App.css'
 import Navigation from './components/Navigation'
 import History from './components/History'
@@ -61,7 +61,9 @@ function DayRoute() {
 }
 
 function App() {
+  const location = useLocation()
   const today = new Date().toISOString().split('T')[0]
+  const isDayPage = location.pathname.startsWith('/day/')
 
   const days = useMemo(() => {
     return VALENTINE_DAYS.map(d => ({
@@ -76,6 +78,11 @@ function App() {
   return (
     <div className="app">
       <Navigation days={days} />
+      {isDayPage && (
+        <Link to="/" className="back-button" title="Go back home">
+          ← Back
+        </Link>
+      )}
       <Routes>
         <Route
           path="/"

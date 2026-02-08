@@ -20,6 +20,34 @@ body {
   overflow-y: auto;
 }
 
+/* Back Button */
+.back-button {
+  position: fixed;
+  top: 58px;
+  left: 16px;
+  z-index: 900;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #5a4a6a;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+}
+
+.back-button:hover {
+  background: white;
+  color: #c44569;
+  border-color: rgba(196, 69, 105, 0.2);
+  box-shadow: 0 2px 8px rgba(196, 69, 105, 0.15);
+}
+
 /* Floating Hearts Background */
 .floating-hearts {
   position: fixed;
